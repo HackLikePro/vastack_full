@@ -44,7 +44,22 @@ vastackControllers.controller('AccountCtrl', ['$scope', '$http',
       }).success(function(data) {
         alert("logedout");
       })
-    }
+    };
+    
+     $scope.getprojectinfo = function() {
+      $http({
+        method: 'POST',
+        url: 'projectinfo',
+        data: "", //验证用户身份
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).success(function(data) {
+        $scope.project = data;
+      })
+    };
+    
+    $scope.getprojectinfo();
   }
 ]);
 
@@ -88,6 +103,7 @@ vastackControllers.controller('UserCtrl', ['$scope', '$http', '$location',
             }
           }).error(function(data, status) {
             console.error('Repos error', status, data);
+            alert(JSON.stringify(data));
             $scope.message = "Server error, please try later.";
           });
         }

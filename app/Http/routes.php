@@ -33,8 +33,17 @@ Route::group(['middleware' => 'web'], function () {
     //client apis
     //login
     Route::post('/clientin', 'ClientPageController@login');
-    Route::post('/account', 'ClientPageController@getaccountinfo');
-    
+    Route::post('/clientupdate', 'ClientPageController@clientupdate');
+   
+    //add project 
+    Route::get('/creatproject', 'ClientPageController@creatproject');
+    Route::post('/editproject', 'ClientPageController@editproject');
+    Route::post('/delproject', 'ClientPageController@delproject');
+    Route::post('/projectinfo', 'ClientPageController@getprojectinfo');
+    Route::post('/projectdetail', 'ClientPageController@getprojectdetail');
   
-    Route::get('/home', 'HomeController@index');
+    //add note to project
+    Route::post('/addnote', 'ClientPageController@addnote');
+    Route::post('/delnote', 'ClientPageController@delnote');
+   // Route::get('/home', 'HomeController@index');
 });
