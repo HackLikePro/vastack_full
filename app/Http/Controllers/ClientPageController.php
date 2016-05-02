@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Contracts\Auth\Authenticatable;
+use DB;
 
 class ClientPageController extends Controller
 {
@@ -26,12 +27,23 @@ class ClientPageController extends Controller
       
       if(Auth::attempt(['name' =>  $username, 'password' => $password]))
       {
-        //$user2 = Auth::user();
+        return "1";
       } 
       else
       {
         return "-1";
       }
+    }
+  
+   public function checklogin(Request $request)
+   {
+       $user = Auth::user();
+       if($user){
+         return "1";
+       }
+     else{
+       return "-1";
+     }
     }
   
   public function getprojectinfo(Request $request)
@@ -82,5 +94,13 @@ class ClientPageController extends Controller
        
      }
    }
+  
+  public function delproject(Request $request)
+  {
+    $user = Auth::user();
+    DB::table('projects')->where('id',$request[0])->where('user_id',$user['id'])->delete();
+    $projectslist = Project::where('user_id', $user['id'])->get();
+    return $projectslist;
+  }
   
 }

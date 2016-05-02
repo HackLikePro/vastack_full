@@ -33,6 +33,23 @@ vastackControllers.controller('IndexCtrl', ['$scope',
 
 vastackControllers.controller('AccountCtrl', ['$scope', '$http', '$location','$window',
   function($scope, $http, $location, $window) {
+    $scope.checklogin = function() {
+       $http({
+        method: 'POST',
+        url: 'checklogin',
+        data: "", //验证用户身份
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).success(function(data) {
+           if(data != "1")
+          {
+            $scope.message = "please log in first";
+            $location.path('/login');
+          }
+      })
+    };
+  
     $scope.clientlogout = function() {
       $http({
         method: 'GET',
@@ -72,7 +89,23 @@ vastackControllers.controller('AccountCtrl', ['$scope', '$http', '$location','$w
       })
     };
     
+    $scope.delproject = function(id){
+       $http({
+        method: 'POST',
+        url: 'delproject',
+        data: id, //验证用户身份
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).success(function(data) {
+        $scope.projectlist = data;
+      })
+    };
+    
+    $scope.checklogin();
+    
     $scope.getprojectinfo();
+    
   }
 ]);
 
@@ -111,12 +144,17 @@ vastackControllers.controller('UserCtrl', ['$scope', '$http', '$location',
             $scope.message = data;
             if (data == "-1") {
               $scope.message = "Wrong username or password, please try agian.";
-            } else {
+            } 
+            else if(data=="1") {
               $location.path('/myaccount');
+            }
+            else
+            {
+              $scope.message = "please try agian."
             }
           }).error(function(data, status) {
             console.error('Repos error', status, data);
-            alert(JSON.stringify(data));
+            alert("opss, please try agian.");
             $scope.message = "Server error, please try later.";
           });
         }

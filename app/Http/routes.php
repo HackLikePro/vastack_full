@@ -33,6 +33,8 @@ Route::group(['middleware' => 'web'], function () {
     //client apis
     //login
     Route::post('/clientin', 'ClientPageController@login');
+    Route::post('/checklogin', 'ClientPageController@checklogin');
+    Route::get('/checklogin', 'ClientPageController@checklogin');
     Route::post('/clientupdate', 'ClientPageController@clientupdate');
    
     //add project 

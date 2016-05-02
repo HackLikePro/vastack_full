@@ -30,8 +30,8 @@
 	<link rel="stylesheet" href="assets/plugins/animate.css">
 	<link rel="stylesheet" href="assets/plugins/line-icons/line-icons.css">
 	<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css">
-	<link rel="stylesheet" href="assets/plugins/bxslider/jquery.bxslider.css">
+<!-- 	<link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css">
+	<link rel="stylesheet" href="assets/plugins/bxslider/jquery.bxslider.css"> -->
 	<link rel="stylesheet" href="assets/plugins/scrollbar/css/jquery.mCustomScrollbar.css">
 	<link rel="stylesheet" href="assets/plugins/fancybox/source/jquery.fancybox.css">
 	<link rel="stylesheet" href="assets/plugins/revolution-slider/rs-plugin/css/settings.css" type="text/css" media="screen">

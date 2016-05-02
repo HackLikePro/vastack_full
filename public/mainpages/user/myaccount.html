@@ -130,33 +130,33 @@
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<form action="#" class="sky-form">
-						<header>Creat a Project</header>
+								<header>Creat a Project</header>
 
-						<fieldset>
-							<section>
-								<label class="label">Project Name</label>
-								<label class="input">
+								<fieldset>
+									<section>
+										<label class="label">Project Name</label>
+										<label class="input">
 									<input ng-model="project.name" name="name" type="text">
 								</label>
-							</section>
-							
-							<section>
-								<label class="label">Contact Email</label>
-								<label class="input">
+									</section>
+
+									<section>
+										<label class="label">Contact Email</label>
+										<label class="input">
 									<input ng-model="project.email" name="email" type="text">
 								</label>
-							</section>
+									</section>
 
-							<section>
-								<label class="label">Contact Phone Number</label>
-								<label class="input">
+									<section>
+										<label class="label">Contact Phone Number</label>
+										<label class="input">
 									<input ng-model="project.phone" name="phone" type="text">
 								</label>
-							</section>
-							
-							<section>
-								<label class="label">Coding Language</label>
-								<label name="project.lang" class="select">
+									</section>
+
+									<section>
+										<label class="label">Coding Language</label>
+										<label name="project.lang" class="select">
 									<select>
 										<option value="0">None</option>
 										<option value="1">PHP</option>
@@ -171,37 +171,37 @@
 									</select>
 									<i></i>
 								</label>
-							</section>
-														
-						  <section>
-											<label name="duedate" class="label">Project due date</label>
-											<div  id="inline"></div>
-										</section>
-							
-							<section>
-								<label class="label">Upload Detailed Requirement</label>
-								<label for="file" class="input input-file">
+									</section>
+
+									<section>
+										<label name="duedate" class="label">Project due date</label>
+										<div id="inline"></div>
+									</section>
+
+									<section>
+										<label class="label">Upload Detailed Requirement</label>
+										<label for="file" class="input input-file">
 									<div class="button"><input name="url" type="file" id="file" onchange="this.parentNode.nextSibling.value = this.value">Browse</div><input type="text" readonly="">
 								</label>
-							</section>
-							
-							<section>
-								<label class="label">Project Description</label>
-								<label class="textarea">
+									</section>
+
+									<section>
+										<label class="label">Project Description</label>
+										<label class="textarea">
 									<textarea ng-model="project.descibe" name= "descibe" rows="6"></textarea>
 								</label>
-								<div class="note"><strong>Note:</strong> briefly describe your project</div>
-							</section>
-						
-						</fieldset>
+										<div class="note"><strong>Note:</strong> briefly describe your project</div>
+									</section>
+
+								</fieldset>
 
 
 
-						<footer>
-							<button type="button" class="btn-u" ng-click="creatproject()" data-dismiss="modal">Submit</button>
-							<button type="button" class="btn-u btn-u-default" data-dismiss="modal">Close</button>
+								<footer>
+									<button type="button" class="btn-u" ng-click="creatproject()" data-dismiss="modal">Submit</button>
+									<button type="button" class="btn-u btn-u-default" data-dismiss="modal">Close</button>
 								</footer>
-					</form>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -209,9 +209,32 @@
 
 				<div class="row sm-margin-bottom-20">
 					<div style="padding-bottom:20px" class="col-sm-6 sm-margin-bottom-20" ng-repeat="project in projectlist track by project.id">
-						<a href="#">
-							<div class="service-block-v3 service-block-u">
-								<i class="icon-users"></i>
+
+						<div class="service-block-v3 service-block-u">
+							<a><i projectid="{{project.id}}" data-toggle="modal" data-target="#delbox{{project.id}}" class="fa fa-trash fa-lg pull-right" aria-hidden="true"></i></a>
+							<div class="modal fade" id="delbox{{project.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+								<div class="modal-dialog modal-lg">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" aria-label="Close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+											<h1 style="color:white" class="modal-title" id="myModalLabel">Be Careful!
+											</h1>
+										</div>
+										<div class="modal-body">
+											<h2 ><p>Are you sure you want to delete project: {{project.name}} ?<br> once it is deleted, we can do nothing about it.</p></h2>
+										</div>
+										<div class="modal-footer">
+											<button name="id" ng-click="delproject(project.id)" type="button" class="btn btn-u btn-u-red" data-dismiss="modal">Delete</button>
+												<button name="id"  type="button" class="btn btn-u btn-u-red" data-dismiss="modal">No! I dont want delete it.</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<a href="#">
+								<i class="fa fa-tasks"></i>
+
 								<span class="service-heading">Project Name: </span>
 								<br>
 								<h2 style="font-weight:bold; color:#FFF;">{{project.name}} </h2>
@@ -233,9 +256,9 @@
 									</div>
 								</div>
 
+							</a>
+						</div>
 
-							</div>
-						</a>
 					</div>
 
 
