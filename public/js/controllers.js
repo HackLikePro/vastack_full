@@ -29,10 +29,10 @@ vastackControllers.controller('IndexCtrl', ['$scope',
   }
 ]);
 
-var vastackControllers = angular.module('vastackControllers', []);
 
-vastackControllers.controller('AccountCtrl', ['$scope', '$http',
-  function($scope, $http) {
+
+vastackControllers.controller('AccountCtrl', ['$scope', '$http', '$location','$window',
+  function($scope, $http, $location, $window) {
     $scope.clientlogout = function() {
       $http({
         method: 'GET',
@@ -45,8 +45,8 @@ vastackControllers.controller('AccountCtrl', ['$scope', '$http',
         alert("logedout");
       })
     };
-    
-     $scope.getprojectinfo = function() {
+
+    $scope.getprojectinfo = function() {
       $http({
         method: 'POST',
         url: 'projectinfo',
@@ -55,7 +55,20 @@ vastackControllers.controller('AccountCtrl', ['$scope', '$http',
           'Content-Type': 'application/json'
         }
       }).success(function(data) {
-        $scope.project = data;
+        $scope.projectlist = data;
+      })
+    };
+    
+    $scope.creatproject = function() {
+      $http({
+        method: 'POST',
+        url: 'creatproject',
+        data: $scope.project, //验证用户身份
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).success(function(data) {
+        $scope.projectlist = data;
       })
     };
     
@@ -118,9 +131,10 @@ vastackControllers.controller('UserCtrl', ['$scope', '$http', '$location',
 
     //     2.用户注册
     $scope.jsreg = function() {
+   
       if ($scope.user.password == $scope.user.password_confirmation && $scope.user.password != null && $scope.user.term == true) {
 
-//         登出帐号
+        //         登出帐号
         $http({
           method: 'GET',
           url: 'logout',
@@ -130,7 +144,7 @@ vastackControllers.controller('UserCtrl', ['$scope', '$http', '$location',
           }
         });
 
-//         注册验证
+        //         注册验证
         $http({
           method: 'POST',
           url: 'register',

@@ -36,10 +36,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/clientupdate', 'ClientPageController@clientupdate');
    
     //add project 
-    Route::get('/creatproject', 'ClientPageController@creatproject');
+    Route::post('/creatproject', 'ClientPageController@creatproject');
     Route::post('/editproject', 'ClientPageController@editproject');
     Route::post('/delproject', 'ClientPageController@delproject');
     Route::post('/projectinfo', 'ClientPageController@getprojectinfo');
+    //Route::get('/projectinfo', 'ClientPageController@getprojectinfo');
     Route::post('/projectdetail', 'ClientPageController@getprojectdetail');
   
     //add note to project

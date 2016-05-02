@@ -17,8 +17,9 @@ class ClientPageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function login(Request $request)
-    {
+ 
+  public function login(Request $request)
+   {
       $username = $request->get("username");
       $password = $request->get("password");
       Auth::logout();
@@ -37,7 +38,7 @@ class ClientPageController extends Controller
    {
       $user = Auth::user();
     if($user){
-      $projectslist = Project::where('user_id', $user['id'])->first();
+      $projectslist = Project::where('user_id', $user['id'])->get();
       return $projectslist;
     }
     else
@@ -46,25 +47,25 @@ class ClientPageController extends Controller
     }
    }
   
-   public function creatproject(Request $request)
+  public function creatproject(Request $request)
    { 
      $user = Auth::user();
 //      有错
      if($user){
 //        新project内容
         $project = new Project;
-//        $project['user_id'] = $user['id'];
-//        $project['describe'] = $request->get("descibe");
-//        $project['name'] = $request->get("name");
+       $project['user_id'] = $user['id'];
+       $project['describe'] = $request->get("descibe");
+       $project['name'] = $request->get("name");
 //        $project['duedate'] = $request->get("duedate");
 //        $project['task'] = $request->get("task");
 //        $project['deliveryable'] = $request->get("deliveryable");
 //        $project['url'] = $request->get("url");
 //        $project['status'] = $request->get("status");
 //        测试
-       $project['user_id'] = $user['id'];
-       $project['describe'] = "test";
-       $project['name'] = "Spring Water 2.0";
+//        $project['user_id'] = $user['id'];
+//        $project['describe'] = "test";
+//        $project['name'] = "Spring Water 2.0";
        $project['duedate'] = "test";
        $project['task'] = "test";
        $project['deliveryable'] = "test";
@@ -74,7 +75,8 @@ class ClientPageController extends Controller
        
 //        写入数据库
        $project -> save();
-       return "/200";
+       $projectslist = Project::where('user_id', $user['id'])->get();
+       return  $projectslist;
      }
      else{
        

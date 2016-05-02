@@ -2,14 +2,14 @@
 
 /* Directives */
 angular.module('VASApp')
-  .directive('header', function() {
+  .directive('pageheader', function() {
     return {
       templateUrl: 'mainpages/header.html'
     };
   });
 
 angular.module('VASApp')
-  .directive('footer', function() {
+  .directive('pagefooter', function() {
     return {
       templateUrl: 'mainpages/footer.html'
     };
