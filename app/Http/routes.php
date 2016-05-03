@@ -45,8 +45,10 @@ Route::group(['middleware' => 'web'], function () {
     //Route::get('/projectinfo', 'ClientPageController@getprojectinfo');
     Route::post('/projectdetail', 'ClientPageController@getprojectdetail');
   
+  
     //add note to project
-    Route::post('/addnote', 'ClientPageController@addnote');
+    Route::post('/getnoteinfo', 'ClientPageController@getnoteinfo');
+    Route::post('/creatnote', 'ClientPageController@creatnote');
     Route::post('/delnote', 'ClientPageController@delnote');
    // Route::get('/home', 'HomeController@index');
 });

@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
+use DB;
 use App\User;
 use App\Project;
+use App\Note;
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use Auth;
 use Illuminate\Contracts\Auth\Authenticatable;
-use DB;
+
 
 class ClientPageController extends Controller
 {
@@ -35,7 +36,7 @@ class ClientPageController extends Controller
       }
     }
   
-   public function checklogin(Request $request)
+  public function checklogin(Request $request)
    {
        $user = Auth::user();
        if($user){
@@ -96,11 +97,54 @@ class ClientPageController extends Controller
    }
   
   public function delproject(Request $request)
-  {
+   {
     $user = Auth::user();
     DB::table('projects')->where('id',$request[0])->where('user_id',$user['id'])->delete();
     $projectslist = Project::where('user_id', $user['id'])->get();
     return $projectslist;
   }
+  
+  public function getnoteinfo(Request $request)
+   {
+      $user = Auth::user();
+       if($user)
+       {
+         $user_id = $user['id'];
+         $notelist = new Note;
+         $notelist = Note::where('user_id',$user_id)->get(); 
+         return $notelist;
+       }
+  }
+  
+  public function creatnote(Request $request)
+   {
+      $user = Auth::user();
+       if($user)
+       {
+         $user_id = $user['id'];
+         $newnote = new Note;
+         $newnote['user_id'] = $user_id;
+         $newnote['project_id'] = $request -> get('project_id');
+         $newnote['note'] = $request -> get('note');
+         $newnote['status'] = "1";
+//          测试
+//          $newnote['user_id'] = "1";
+//          $newnote['project_id'] = "1";
+//          $newnote['note'] = "123";
+//          $newnote['status'] = "1";
+         
+         $newnote -> save();
+         $notelist = Note::where('user_id', $user['id'])->get();
+         return  $notelist;
+       }
+  }
+  
+  public function delnote(Request $request)
+   {
+    $user = Auth::user();
+    DB::table('notes')->where('id',$request[0])->where('user_id',$user['id'])->delete();
+    $notelist = Note::where('user_id', $user['id'])->get();
+    return $notelist;
+   }
   
 }

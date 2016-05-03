@@ -102,10 +102,52 @@ vastackControllers.controller('AccountCtrl', ['$scope', '$http', '$location','$w
       })
     };
     
+    $scope.getnoteinfo = function(){
+       $http({
+        method: 'POST',
+        url: 'getnoteinfo',
+        data: "", //验证用户身份
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).success(function(data) {
+        $scope.notes = data;
+      })
+    };
+    
+    $scope.delnote = function(id){
+       $http({
+        method: 'POST',
+        url: 'delnote',
+        data: id, //验证用户身份
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).success(function(data) {
+        $scope.notes = data;
+         //alert(data);
+      })     
+    };
+    
+    $scope.creatnote = function(id){
+       $http({
+        method: 'POST',
+        url: 'creatnote',
+        data: $scope.newnote, //验证用户身份
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).success(function(data) {
+        $scope.notes = data;
+         //alert(data);
+      })     
+    };
+    
     $scope.checklogin();
     
     $scope.getprojectinfo();
     
+    $scope.getnoteinfo();
   }
 ]);
 
