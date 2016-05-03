@@ -99,7 +99,11 @@ class ClientPageController extends Controller
   public function delproject(Request $request)
    {
     $user = Auth::user();
+    $deletproject = Project::where('id', $request[0])->first();
+    
     DB::table('projects')->where('id',$request[0])->where('user_id',$user['id'])->delete();
+    DB::table('notes')->where('project_id',$deletproject['name'])->where('user_id',$user['id'])->delete();
+//     因为note table 中存的 project_id 实为 project 的名字 所以在这里删project时有可能把同名project的note也删掉
     $projectslist = Project::where('user_id', $user['id'])->get();
     return $projectslist;
   }
@@ -124,7 +128,7 @@ class ClientPageController extends Controller
          $user_id = $user['id'];
          $newnote = new Note;
          $newnote['user_id'] = $user_id;
-         $newnote['project_id'] = $request -> get('project_id');
+         $newnote['project_id'] = $request -> get('project');
          $newnote['note'] = $request -> get('note');
          $newnote['status'] = "1";
 //          测试
@@ -135,7 +139,7 @@ class ClientPageController extends Controller
          
          $newnote -> save();
          $notelist = Note::where('user_id', $user['id'])->get();
-         return  $notelist;
+         return $notelist;
        }
   }
   

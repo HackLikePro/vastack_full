@@ -99,6 +99,7 @@ vastackControllers.controller('AccountCtrl', ['$scope', '$http', '$location','$w
         }
       }).success(function(data) {
         $scope.projectlist = data;
+        $scope.getnoteinfo();
       })
     };
     
@@ -138,9 +139,12 @@ vastackControllers.controller('AccountCtrl', ['$scope', '$http', '$location','$w
           'Content-Type': 'application/json'
         }
       }).success(function(data) {
-        $scope.notes = data;
          //alert(data);
-      })     
+         $scope.notes = data;
+        
+      }).error(function(data){
+         //alert(data);
+       })    
     };
     
     $scope.checklogin();
