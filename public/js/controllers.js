@@ -147,11 +147,26 @@ vastackControllers.controller('AccountCtrl', ['$scope', '$http', '$location','$w
        })    
     };
     
+    $scope.geteventinfo = function(){
+       $http({
+        method: 'POST',
+        url: 'geteventinfo',
+        data: "", //验证用户身份
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).success(function(data) {
+        $scope.eventlist = data;
+      })
+    };
+    
     $scope.checklogin();
     
     $scope.getprojectinfo();
     
     $scope.getnoteinfo();
+    
+    $scope.geteventinfo();
   }
 ]);
 

@@ -312,65 +312,15 @@
                         <h2 class="panel-title heading-sm pull-left"><i class="fa fa-calendar"></i>Upcoming Events</h2>
                         <a href="#"><i class="fa fa-cog pull-right"></i></a>
                      </div>
-                     <div id="scrollbar2" class="panel-body no-padding mCustomScrollbar" data-mcs-theme="minimal-dark">
-                        <div class="profile-event">
+                     <div id="scrollbar2"  class="panel-body no-padding mCustomScrollbar" data-mcs-theme="minimal-dark">
+                        <div ng-repeat="event in eventlist track by id" class="profile-event">
                            <div class="date-formats">
-                              <span>25</span>
-                              <small>05, 2014</small>
+                              <span>15</span>
+                              <small>05 , 2016</small>
                            </div>
                            <div class="overflow-h">
-                              <h3 class="heading-xs"><a href="#">GitHub seminars in Japan.</a></h3>
-                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                           </div>
-                        </div>
-                        <div class="profile-event">
-                           <div class="date-formats">
-                              <span>31</span>
-                              <small>06, 2014</small>
-                           </div>
-                           <div class="overflow-h">
-                              <h3 class="heading-xs"><a href="#">Bootstrap Update</a></h3>
-                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                           </div>
-                        </div>
-                        <div class="profile-event">
-                           <div class="date-formats">
-                              <span>07</span>
-                              <small>08, 2014</small>
-                           </div>
-                           <div class="overflow-h">
-                              <h3 class="heading-xs"><a href="#">Apple Conference</a></h3>
-                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                           </div>
-                        </div>
-                        <div class="profile-event">
-                           <div class="date-formats">
-                              <span>22</span>
-                              <small>10, 2014</small>
-                           </div>
-                           <div class="overflow-h">
-                              <h3 class="heading-xs"><a href="#">Backend Meeting</a></h3>
-                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                           </div>
-                        </div>
-                        <div class="profile-event">
-                           <div class="date-formats">
-                              <span>14</span>
-                              <small>11, 2014</small>
-                           </div>
-                           <div class="overflow-h">
-                              <h3 class="heading-xs"><a href="#">Google Conference</a></h3>
-                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                           </div>
-                        </div>
-                        <div class="profile-event">
-                           <div class="date-formats">
-                              <span>05</span>
-                              <small>12, 2014</small>
-                           </div>
-                           <div class="overflow-h">
-                              <h3 class="heading-xs"><a href="#">FontAwesome Update</a></h3>
-                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
+                              <h2 class="heading-xs" style="font-weight:bold"><a href="#">{{event.event_title}}</a></h2>
+                              <p>{{event.event_decripetion}}</p>
                            </div>
                         </div>
                      </div>
@@ -384,7 +334,7 @@
             <div class="panel panel-profile">
                <div class="panel-heading overflow-h">
                   <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>Project Contacts</h2>
-                  <a href="page_profile_users.html" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
+<!--                   <a href="page_profile_users.html" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a> -->
                </div>
                <div class="panel-body">
                   <div class="row">
@@ -392,16 +342,15 @@
                         <div class="profile-blog blog-border">
                            <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
                            <div class="name-location">
-                              <strong>Mikel Andrews</strong>
-                              <span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
+                              <strong>Development Manager:</strong>
+                              <span>Tony Gu &nbsp; &nbsp; <i class="fa fa-map-marker"></i><a href="#">Montreal,</a> <a href="#">CA</a></span>
                            </div>
                            <div class="clearfix margin-bottom-20"></div>
-                           <p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
+                           <p>Congradulation, your project is in progress! <br> You can provide your valuable oppion to us.</p>
                            <hr>
-                           <ul class="list-inline share-list">
-                              <li><i class="fa fa-bell"></i><a href="#">12 Notifications</a></li>
-                              <li><i class="fa fa-group"></i><a href="#">54 Followers</a></li>
-                              <li><i class="fa fa-twitter"></i><a href="#">Retweet</a></li>
+                           <ul class="list-inline share-list">           
+                              <li><i class="fa fa-envelope"></i><a href="#">TECHVP@VASTACK.COM</a></li>
+                              <li><i class="fa fa-phone"></i><a href="#">(514) 686-4658</a></li>
                            </ul>
                         </div>
                      </div>
@@ -409,16 +358,15 @@
                         <div class="profile-blog blog-border">
                            <img class="rounded-x" src="assets/img/testimonials/img4.jpg" alt="">
                            <div class="name-location">
-                              <strong>Natasha Kolnikova</strong>
-                              <span><i class="fa fa-map-marker"></i><a href="#">Moscow,</a> <a href="#">Russia</a></span>
+                              <strong>Sales Representative:</strong>
+                              <span>Natasha Kolnikova &nbsp; &nbsp;<i class="fa fa-map-marker"></i><a href="#">Montreal,</a> <a href="#">CA</a></span>
                            </div>
                            <div class="clearfix margin-bottom-20"></div>
-                           <p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
+                           <p>You can contact me for more information about payments or related questions.</p>
                            <hr>
                            <ul class="list-inline share-list">
-                              <li><i class="fa fa-bell"></i><a href="#">37 Notifications</a></li>
-                              <li><i class="fa fa-group"></i><a href="#">46 Followers</a></li>
-                              <li><i class="fa fa-twitter"></i><a href="#">Retweet</a></li>
+                              <li><i class="fa fa-envelope"></i><a href="#">SALERP@VASTACK.COM</a></li>
+                              <li><i class="fa fa-phone"></i><a href="#">(514) 686-4658</a></li>
                            </ul>
                         </div>
                      </div>

@@ -33,22 +33,29 @@ Route::group(['middleware' => 'web'], function () {
     //client apis
     //login
     Route::post('/clientin', 'ClientPageController@login');
-    Route::post('/checklogin', 'ClientPageController@checklogin');
-    Route::get('/checklogin', 'ClientPageController@checklogin');
     Route::post('/clientupdate', 'ClientPageController@clientupdate');
-   
+    Route::post('/checklogin', 'ClientPageController@checklogin');
+    //Route::get('/checklogin', 'ClientPageController@checklogin');  
+  
     //add project 
-    Route::post('/creatproject', 'ClientPageController@creatproject');
-    Route::post('/editproject', 'ClientPageController@editproject');
-    Route::post('/delproject', 'ClientPageController@delproject');
     Route::post('/projectinfo', 'ClientPageController@getprojectinfo');
-    //Route::get('/projectinfo', 'ClientPageController@getprojectinfo');
+    Route::post('/creatproject', 'ClientPageController@creatproject');
+    Route::post('/delproject', 'ClientPageController@delproject');
+    
+    Route::post('/editproject', 'ClientPageController@editproject');
     Route::post('/projectdetail', 'ClientPageController@getprojectdetail');
-  
-  
+    //Route::get('/projectinfo', 'ClientPageController@getprojectinfo');
+   
     //add note to project
     Route::post('/getnoteinfo', 'ClientPageController@getnoteinfo');
     Route::post('/creatnote', 'ClientPageController@creatnote');
     Route::post('/delnote', 'ClientPageController@delnote');
-   // Route::get('/home', 'HomeController@index');
+   
+    //add event to user
+    Route::post('/geteventinfo', 'ClientPageController@geteventinfo');
+    //Route::post('/creatnote', 'ClientPageController@creatnote');
+    //Route::post('/delnote', 'ClientPageController@delnote');
+  
+  
+  // Route::get('/home', 'HomeController@index');
 });

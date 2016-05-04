@@ -6,6 +6,7 @@ use DB;
 use App\User;
 use App\Project;
 use App\Note;
+use App\Event;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -50,14 +51,17 @@ class ClientPageController extends Controller
   public function getprojectinfo(Request $request)
    {
       $user = Auth::user();
-    if($user){
-      $projectslist = Project::where('user_id', $user['id'])->get();
-      return $projectslist;
-    }
-    else
-    {
-      return null;
-    }
+      if($user)
+       {
+        $user_id = $user['id'];
+        $projectslist = new Project;
+        $projectslist = Project::where('user_id', $user_id)->get();
+        return $projectslist;
+       }
+       else
+       {
+           return null;
+       }
    }
   
   public function creatproject(Request $request)
@@ -149,6 +153,18 @@ class ClientPageController extends Controller
     DB::table('notes')->where('id',$request[0])->where('user_id',$user['id'])->delete();
     $notelist = Note::where('user_id', $user['id'])->get();
     return $notelist;
+   }
+  
+  public function geteventinfo(Request $request)
+   {
+    $user = Auth::user();
+       if($user)
+       {
+          $user_id = $user['id'];
+          $eventlist = new Event;
+          $eventlist = Event::where('user_id',$user_id)->orwhere('user_id','all')->get(); 
+          return $eventlist;
+       }
    }
   
 }
