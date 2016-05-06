@@ -2,12 +2,12 @@
 <html lang="en" ng-app="VASApp">
 
 <head>
-	<title>Amazing Content | Unify - Responsive Website Template</title>
+	<title>VAStack | Montreal Web Design, Marketing, SEO, Hosting, customizing Company </title>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
+	<meta name="description" content="VAStack is a web design company based in Montreal, QC. We specialize in SEO, website design and SEO">
 	<meta name="author" content="">
 
 	<!-- Favicon -->
@@ -81,6 +81,7 @@
 
 
 	<!-- 前端设计js2 -->
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258979871'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1258979871%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 
 </body>
 

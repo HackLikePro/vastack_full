@@ -51,10 +51,14 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/creatnote', 'ClientPageController@creatnote');
     Route::post('/delnote', 'ClientPageController@delnote');
    
-    //add event to user
+    //get event
     Route::post('/geteventinfo', 'ClientPageController@geteventinfo');
-    //Route::post('/creatnote', 'ClientPageController@creatnote');
-    //Route::post('/delnote', 'ClientPageController@delnote');
+    
+    //get milestone 
+    Route::post('/getmilestoneinfo', 'ClientPageController@getmilestoneinfo');
+  
+    //get message
+    Route::post('/getmessageinfo', 'ClientPageController@getmessageinfo');
   
   
   // Route::get('/home', 'HomeController@index');

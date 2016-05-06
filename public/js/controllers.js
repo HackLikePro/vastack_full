@@ -23,9 +23,25 @@
 
 var vastackControllers = angular.module('vastackControllers', []);
 
-vastackControllers.controller('IndexCtrl', ['$scope',
-  function($scope) {
-    $scope.jslogin = function() {}
+vastackControllers.controller('IndexCtrl', ['$scope','$http',
+  function($scope,$http) {
+     $scope.checklogin = function() {
+       $http({
+        method: 'POST',
+        url: 'checklogin',
+        data: "", //验证用户身份
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).success(function(data) {
+           if(data == "1")
+          {
+            $scope.checkiflogin = "1";
+          }
+      })
+    };
+    
+    $scope.checklogin();
   }
 ]);
 
@@ -46,6 +62,10 @@ vastackControllers.controller('AccountCtrl', ['$scope', '$http', '$location','$w
           {
             $scope.message = "please log in first";
             $location.path('/login');
+          }
+          else
+          {
+            $scope.checkiflogin = "1";
           }
       })
     };
@@ -160,6 +180,32 @@ vastackControllers.controller('AccountCtrl', ['$scope', '$http', '$location','$w
       })
     };
     
+    $scope.getmilestoneinfo = function(){
+       $http({
+        method: 'POST',
+        url: 'getmilestoneinfo',
+        data: "", //验证用户身份
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).success(function(data) {
+        $scope.milestonelist = data;
+      })
+    };
+    
+    $scope.getmessageinfo = function(){
+       $http({
+        method: 'POST',
+        url: 'getmessageinfo',
+        data: "", //验证用户身份
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).success(function(data) {
+        $scope.messagelist = data;
+      })
+    };
+    
     $scope.checklogin();
     
     $scope.getprojectinfo();
@@ -167,6 +213,10 @@ vastackControllers.controller('AccountCtrl', ['$scope', '$http', '$location','$w
     $scope.getnoteinfo();
     
     $scope.geteventinfo();
+    
+    $scope.getmilestoneinfo();
+    
+    $scope.getmessageinfo();
   }
 ]);
 

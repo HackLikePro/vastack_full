@@ -7,6 +7,8 @@ use App\User;
 use App\Project;
 use App\Note;
 use App\Event;
+use App\Message;
+use App\Milestone;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -164,6 +166,30 @@ class ClientPageController extends Controller
           $eventlist = new Event;
           $eventlist = Event::where('user_id',$user_id)->orwhere('user_id','all')->get(); 
           return $eventlist;
+       }
+   }
+  
+  public function getmessageinfo(Request $request)
+   {
+    $user = Auth::user();
+       if($user)
+       {
+          $user_id = $user['id'];
+          $messagelist = new Message;
+          $messagelist = Message::where('user_id',$user_id)->get(); 
+          return $messagelist;
+       }
+   }
+  
+  public function getmilestoneinfo(Request $request)
+   {
+    $user = Auth::user();
+       if($user)
+       {
+          $user_id = $user['id'];
+          $milestonelist = new Milestone;
+          $milestonelist = Milestone::where('user_id',$user_id)->get(); 
+          return $milestonelist;
        }
    }
   
