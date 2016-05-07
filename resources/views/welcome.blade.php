@@ -29,7 +29,9 @@
 	<!-- CSS Implementing Plugins -->
 	<link rel="stylesheet" href="assets/plugins/animate.css">
 	<link rel="stylesheet" href="assets/plugins/line-icons/line-icons.css">
+	<link rel="stylesheet" href="assets/plugins/parallax-slider/css/parallax-slider.css">
 	<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/plugins/owl-carousel/owl-carousel/owl.carousel.css">
 <!-- 	<link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css">
 	<link rel="stylesheet" href="assets/plugins/bxslider/jquery.bxslider.css"> -->
 	<link rel="stylesheet" href="assets/plugins/scrollbar/css/jquery.mCustomScrollbar.css">
