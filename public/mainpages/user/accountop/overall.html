@@ -1,0 +1,329 @@
+ <div class="profile-body">
+            <!--Service Block v3-->
+            <!-- 				建立project 按钮 开始 -->
+            <button class="btn-u btn-u-red margin-bottom-10" data-toggle="modal" data-target="#responsive"> Creat a New Project</button>
+            <div class="modal fade" id="responsive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <form action="#" class="sky-form">
+                        <header>Creat a Project</header>
+                        <fieldset>
+                           <section>
+                              <label class="label">Project Name</label>
+                              <label class="input">
+                              <input ng-model="$parent.project.name" name="name" type="text">
+                              </label>
+                           </section>
+                           <section>
+                              <label class="label">Contact Email</label>
+                              <label class="input">
+                              <input ng-model="$parent.project.email" name="email" type="text">
+                              </label>
+                           </section>
+                           <section>
+                              <label class="label">Contact Phone Number</label>
+                              <label class="input">
+                              <input ng-model="$parent.project.phone" name="phone" type="text">
+                              </label>
+                           </section>
+                           <section>
+                              <label class="label">Coding Language</label>
+                              <label name="$parent.project.lang" class="select">
+                                 <select>
+                                    <option value="0">None</option>
+                                    <option value="1">PHP</option>
+                                    <option value="2">JAVA</option>
+                                    <option value="3">Python</option>
+                                    <option value="4">Ruby</option>
+                                    <option value="0">C#</option>
+                                    <option value="1">C++</option>
+                                    <option value="2">C</option>
+                                    <option value="3">MEAN Stack</option>
+                                    <option value="4">LAMP Stack</option>
+                                 </select>
+                                 <i></i>
+                              </label>
+                           </section>
+                           <section>
+                              <label name="duedate" class="label">Project due date</label>
+                              <div id="inline"></div>
+                           </section>
+                           <section>
+                              <label class="label">Upload Detailed Requirement</label>
+                              <label for="file" class="input input-file">
+                                 <div class="button"><input name="url" type="file" id="file" onchange="this.parentNode.nextSibling.value = this.value">Browse</div>
+                                 <input type="text" readonly="">
+                              </label>
+                           </section>
+                           <section>
+                              <label class="label">Project Description</label>
+                              <label class="textarea">
+                              <textarea ng-model="$parent.project.descibe" name= "descibe" rows="6"></textarea>
+                              </label>
+                              <div class="note"><strong>Note:</strong> briefly describe your project</div>
+                           </section>
+                        </fieldset>
+                        <footer>
+                           <button type="button" class="btn-u" ng-click="creatproject()" data-dismiss="modal">Submit</button>
+                           <button type="button" class="btn-u btn-u-default" data-dismiss="modal">Close</button>
+                        </footer>
+                     </form>
+                  </div>
+               </div>
+            </div>
+            <!-- 				建立project 按钮结束 -->
+            <div class="row sm-margin-bottom-20">
+               <div style="padding-bottom:20px" class="col-sm-6 sm-margin-bottom-20" ng-repeat="project in projectlist track by project.id">
+                  <div class="service-block-v3 service-block-u">
+                     <a href="">
+                        <p projectid="{{project.id}}" data-toggle="modal" style="color:#FFF"data-target="#delbox{{project.id}}" class="pull-right" aria-hidden="true">x</p>
+                     </a>
+                     <div class="modal fade" id="delbox{{project.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog modal-lg">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <button type="button" class="close" aria-label="Close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                                 <h1 style="color:white" class="modal-title" id="myModalLabel">Be Careful!
+                                 </h1>
+                              </div>
+                              <div class="modal-body">
+                                 <h2 >
+                                    <p>Are you sure you want to delete project: {{project.name}} ?<br> once it is deleted, we can do nothing about it.</p>
+                                 </h2>
+                              </div>
+                              <div class="modal-footer">
+                                 <button name="id" ng-click="delproject(project.id)" type="button" class="btn btn-u btn-u-red" data-dismiss="modal">Delete</button>
+                                 <button name="id"  type="button" class="btn btn-u btn-u-red" data-dismiss="modal">No! I dont want delete it.</button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <a href="#">
+                        <i class="fa fa-tasks"></i>
+                        <span class="service-heading">Project Name: </span>
+                        <br>
+                        <h2 style="font-weight:bold; color:#FFF;">{{project.name}} </h2>
+                        <div class="clearfix margin-bottom-10"></div>
+                        <div class="statistics">
+                           <h3 class="heading-xs">Statistics in Progress Bar <span class="pull-right">67%</span></h3>
+                           <div class="progress progress-u progress-xxs">
+                              <div style="width: 67%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="67" role="progressbar" class="progress-bar progress-bar-light">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row margin-bottom-20">
+                           <div class="col-xs-6 service-in">
+                              <small>Last Updated</small>
+                              <h4> 2014 Aug 03</h4>
+                           </div>
+                        </div>
+                     </a>
+                  </div>
+               </div>
+               <!-- 										<div class="col-sm-6">
+                  <div class="service-block-v3 service-block-blue">
+                  	<i class="icon-users"></i>
+                  	<span class="service-heading">Project1 Name </span>
+                  	<span class="counter">52,147</span>
+                  
+                  
+                  	<div class="clearfix margin-bottom-10"></div>
+                  
+                  	<div class="statistics">
+                  		<h3 class="heading-xs">Statistics in Progress Bar <span class="pull-right">67%</span></h3>
+                  		<div class="progress progress-u progress-xxs">
+                  			<div style="width: 67%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="67" role="progressbar" class="progress-bar progress-bar-light">
+                  			</div>
+                  		</div>
+                  	</div>
+                  
+                  	<div class="row margin-bottom-20">
+                  		<div class="col-xs-6 service-in">
+                  			<small>Last Updated</small>
+                  			<h4> 2014 Aug 03</h4>
+                  		</div>
+                  	</div>
+                  
+                  
+                  </div>
+                  </div> -->
+            </div>
+            <!--/end row-->
+            <!--End Service Block v3-->
+            <hr>
+            <div class="row margin-bottom-20">
+               <!--Profile Post-->
+               <div class="col-sm-6">
+                  <div class="panel panel-profile no-bg">
+                     <div class="panel-heading overflow-h">
+                        <a  data-toggle="modal" data-target="#notebox" href="">
+                           <h2 class="panel-title heading-sm pull-left"><i class="fa fa-pencil"></i>Click here to Creat a Note</h2>
+                        </a>
+                        <div class="modal fade" id="notebox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                           <div class="modal-dialog">
+                              <div class="modal-content sky-form">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel4">Creat a new Note</h4>
+                                 </div>
+                                 <div class="modal-body">
+                                    <div class="row">
+                                       <div class="col-md-12">
+                                          <section>
+                                             <label class="label">Select a Project</label>
+                                             <label name="prjectname" class="select">
+                                                <select ng-model="$parent.newnote.project">
+                                                   <option ng-repeat="project in projectlist track by project.id" value="{{project.name}}">{{project.name}}</option>
+                                                </select>
+                                                <i></i>
+                                             </label>
+                                          </section>
+                                          <section>
+                                             <label class="label">Note Description</label>
+                                             <label class="textarea">
+                                             <textarea ng-model="$parent.newnote.note" name= "descibe" rows="6"></textarea>
+                                             </label>
+                                             <div class="note"><strong>Note:</strong> briefly describe your requirement</div>
+                                          </section>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="modal-footer">
+                                    <button type="button" class="btn-u btn-u-default" data-dismiss="modal">Close</button>
+                                    <button ng-click="creatnote()" type="button" data-dismiss="modal" class="btn-u btn-u-primary">Add This Note</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div id="scrollbar" class="panel-body no-padding mCustomScrollbar" data-mcs-theme="minimal-dark">
+                        <div ng-repeat="note in notes track by note.id" class="profile-post color-one">
+                           <a href="">
+                              <p ng-click="delnote(note.id);" class="pull-right" >x  &nbsp;&nbsp;&nbsp;&nbsp;</p>
+                           </a>
+                           <span class="profile-post-numb">{{$index+1}}</span>
+                           <div class="profile-post-in">
+                              <h2 class="heading-xs"  style="font-weight:bold; color:#FFF">{{note.project_id}}</h2>
+                              <p>{{note.note}}</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!--End Profile Post-->
+               <!--Profile Event-->
+               <div class="col-sm-6 md-margin-bottom-20">
+                  <div class="panel panel-profile no-bg">
+                     <div class="panel-heading overflow-h">
+                        <h2 class="panel-title heading-sm pull-left"><i class="fa fa-calendar"></i>Upcoming Events</h2>
+                        <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                     </div>
+                     <div id="scrollbar2"  class="panel-body no-padding mCustomScrollbar" data-mcs-theme="minimal-dark">
+                        <div ng-repeat="event in eventlist track by id" class="profile-event">
+                           <div class="date-formats">
+                              <span>15</span>
+                              <small>05 , 2016</small>
+                           </div>
+                           <div class="overflow-h">
+                              <h2 class="heading-xs" style="font-weight:bold"><a href="#">{{event.event_title}}</a></h2>
+                              <p>{{event.event_decripetion}}</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!--End Profile Event-->
+            </div>
+            <!--/end row-->
+            <hr>
+            <!--Profile Blog-->
+            <div class="panel panel-profile">
+               <div class="panel-heading overflow-h">
+                  <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>Project Contacts</h2>
+<!--                   <a href="page_profile_users.html" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a> -->
+               </div>
+               <div class="panel-body">
+                  <div class="row">
+                     <div class="col-sm-6">
+                        <div class="profile-blog blog-border">
+                           <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
+                           <div class="name-location">
+                              <strong>Development Manager:</strong>
+                              <span>Tony Gu &nbsp; &nbsp; <i class="fa fa-map-marker"></i><a href="#">Montreal,</a> <a href="#">CA</a></span>
+                           </div>
+                           <div class="clearfix margin-bottom-20"></div>
+                           <p>Congradulation, your project is in progress! <br> You can provide your valuable oppion to us.</p>
+                           <hr>
+                           <ul class="list-inline share-list">           
+                              <li><i class="fa fa-envelope"></i><a href="#">TECHVP@VASTACK.COM</a></li>
+                              <li><i class="fa fa-phone"></i><a href="#">(514) 686-4658</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="col-sm-6">
+                        <div class="profile-blog blog-border">
+                           <img class="rounded-x" src="assets/img/testimonials/img4.jpg" alt="">
+                           <div class="name-location">
+                              <strong>Sales Representative:</strong>
+                              <span>Natasha Kolnikova &nbsp; &nbsp;<i class="fa fa-map-marker"></i><a href="#">Montreal,</a> <a href="#">CA</a></span>
+                           </div>
+                           <div class="clearfix margin-bottom-20"></div>
+                           <p>You can contact me for more information about payments or related questions.</p>
+                           <hr>
+                           <ul class="list-inline share-list">
+                              <li><i class="fa fa-envelope"></i><a href="#">SALERP@VASTACK.COM</a></li>
+                              <li><i class="fa fa-phone"></i><a href="#">(514) 686-4658</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!--End Profile Blog-->
+            <hr>
+            <div class="row">
+               <!--Alert-->
+               <div class="col-sm-7 sm-margin-bottom-30">
+                  <div class="panel panel-profile">
+                     <div class="panel-heading overflow-h">
+                        <h2 class="panel-title heading-sm pull-left"><i class="fa fa-send"></i>Mile Stones</h2>
+                        <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                     </div>
+                     <div id="scrollbar3" class="panel-body no-padding mCustomScrollbar" data-mcs-theme="minimal-dark">
+                        
+                        <div ng-repeat="milestone in milestonelist" class="alert-blocks alert-blocks-success alert-dismissable">
+                           <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                           <img class="rounded-x" src="assets/img/testimonials/img2.jpg" alt="">
+                           <div class="overflow-h">
+                              <strong class="color-green">{{milestone.status}} <small class="pull-right"><em>{{milestone.project_id}}</em></small></strong>
+                              <p>{{milestone.milestone}}</p>
+                           </div>
+                        </div>
+                        
+                     </div>
+                  </div>
+               </div>
+               <!--End Alert-->
+               <div class="col-sm-5">
+                  <div class="panel panel-profile">
+                     <div class="panel-heading overflow-h">
+                        <h2 class="panel-title heading-sm pull-left"><i class="fa fa-comments-o"></i> VAstack Message</h2>
+                        <a href="page_profile_comments.html" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
+                     </div>
+                     <div id="scrollbar4" class="panel-body no-padding mCustomScrollbar" data-mcs-theme="minimal-dark">
+                        <div ng-repeat="message in messagelist track by message.id" class="comment">
+                           <img src="{{message.sender_url}}" alt="">
+                           <div class="overflow-h">
+                              <strong>{{message.sender_id}}<small class="pull-right"> {{message.created_at}}</small></strong>
+                              <p>{{message.message}}</p>
+                              <ul class="list-inline comment-list">
+                                 <li><i class="fa fa-comments"></i> <a href="#">5</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!--/end row-->
+         </div>

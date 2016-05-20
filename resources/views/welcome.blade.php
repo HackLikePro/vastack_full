@@ -2,12 +2,12 @@
 <html lang="en" ng-app="VASApp">
 
 <head>
-	<title>VAStack | Montreal Web Design, Marketing, SEO, Hosting, customizing Company </title>
+	<title>VAStack| Montreal Web Design, Marketing, SEO, Hosting, customizing Company since 2006</title>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="VAStack is a web design company based in Montreal, QC. We specialize in SEO, website design and SEO">
+	<meta name="description" content="VAStack is a web design company based in Montreal, QC. We specialize in SEO, website design and Software project design">
 	<meta name="author" content="">
 
 	<!-- Favicon -->

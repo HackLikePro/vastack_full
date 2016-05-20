@@ -39,6 +39,11 @@ class ClientPageController extends Controller
       }
     }
   
+  public function logout(Request $request)
+   {
+      Auth::logout();
+   }
+  
   public function checklogin(Request $request)
    {
        $user = Auth::user();
@@ -73,9 +78,9 @@ class ClientPageController extends Controller
      if($user){
 //        新project内容
         $project = new Project;
-       $project['user_id'] = $user['id'];
-       $project['describe'] = $request->get("descibe");
-       $project['name'] = $request->get("name");
+        $project['user_id'] = $user['id'];
+        $project['describe'] = $request->get("descibe");
+        $project['name'] = $request->get("name");
 //        $project['duedate'] = $request->get("duedate");
 //        $project['task'] = $request->get("task");
 //        $project['deliveryable'] = $request->get("deliveryable");

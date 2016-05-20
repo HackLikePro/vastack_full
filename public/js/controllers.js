@@ -41,14 +41,32 @@ vastackControllers.controller('IndexCtrl', ['$scope','$http',
       })
     };
     
-    $scope.checklogin();
+     $scope.checklogin();
   }
 ]);
 
 
 
-vastackControllers.controller('AccountCtrl', ['$scope', '$http', '$location','$window',
-  function($scope, $http, $location, $window) {
+vastackControllers.controller('AccountCtrl', ['$scope', '$http', '$location','$window', '$templateCache',
+  function($scope, $http, $location, $window, $templateCache) {
+    
+    $scope.getaccountinfo = function(input){
+     $scope.menuoption = input;
+    };
+    
+    $scope.logout = function() {
+       $http({
+        method: 'POST',
+        url: 'logout',
+        data: "", //验证用户身份
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).success(function(data) {
+           $location.path('');
+      })
+    };
+    
     $scope.checklogin = function() {
        $http({
         method: 'POST',
@@ -106,6 +124,8 @@ vastackControllers.controller('AccountCtrl', ['$scope', '$http', '$location','$w
         }
       }).success(function(data) {
         $scope.projectlist = data;
+      }).error(function(){
+        
       })
     };
     
@@ -252,7 +272,7 @@ vastackControllers.controller('UserCtrl', ['$scope', '$http', '$location',
               'Content-Type': 'application/json'
             }
           }).success(function(data) {
-            $scope.message = data;
+            $scope.message = "Sucess, please wait.";
             if (data == "-1") {
               $scope.message = "Wrong username or password, please try agian.";
             } 
